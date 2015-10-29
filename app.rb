@@ -25,7 +25,7 @@ class Battle < Sinatra::Base
   get '/attack' do
     @player1 = $player1.name
     @player2 = $player2.name
-    $player2.reduce_hp
+    $player1.attack($player2)
     erb(:attack)
   end
 
