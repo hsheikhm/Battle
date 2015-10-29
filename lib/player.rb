@@ -1,3 +1,5 @@
+require_relative 'game'
+
 class Player
 
   DEFAULT_HP = 100
@@ -10,7 +12,7 @@ class Player
   end
 
   def attack(player)
-    player.receive_damage
+    Game.new.attack(player)
   end
 
   def receive_damage

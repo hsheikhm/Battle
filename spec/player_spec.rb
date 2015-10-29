@@ -17,13 +17,6 @@ describe Player do
     end
   end
 
-  context "#attack" do
-
-    it "damages the opponent" do
-      expect(player2).to receive(:receive_damage)
-      player1.attack(player2)
-    end
-  end
 
   context "#receive_damage" do
 
