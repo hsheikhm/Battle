@@ -1,9 +1,9 @@
 require 'sinatra/base'
-require 'player'
+require './lib/player.rb'
 
 class Battle < Sinatra::Base
 
-  enable :sessions
+
 
   get '/' do
     erb(:index)
@@ -18,12 +18,14 @@ class Battle < Sinatra::Base
   get '/play' do
     @player1 = $player1.name
     @player2 = $player2.name
+    @player2_hp = $player2.hit_points
     erb(:play)
   end
 
   get '/attack' do
     @player1 = $player1.name
     @player2 = $player2.name
+    $player2.reduce_hp
     erb(:attack)
   end
 
