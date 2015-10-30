@@ -9,6 +9,6 @@ feature 'attack' do
     sign_in_and_play
     click_button('Attack')
     click_button('Okay')
-    expect(find('#player2_HP')).to have_content('80 HP')
+    expect(find('#current_player_HP')).to have_content('Eleni 80 HP')
   end
 end

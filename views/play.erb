@@ -1,14 +1,21 @@
-<!-- # <% if @player1 && @player2 %> -->
-<h1><%= @player1 %> vs. <%= @player2 %></h1>
-<!-- # <% end %> -->
+<h1><%= @current_player.name %> vs. <%= @other_player.name %></h1>
 
-<div id="player2_HP" style="border: 3px black solid; width: 120px;">
+<h2><%= @current_player.name %>'s turn</h2>
+
+<div id="other_player_HP" style="border: 3px black solid; width: 120px;">
   <p style="text-align: center;">
-    <%= @player2 %>
-    <%= @player2_hp %> HP
+    <%= @other_player.name %>
+    <%= @other_player_hp %> HP
+  </p>
+</div>
+
+<div id="current_player_HP" style="border: 3px blue solid; width: 120px;">
+  <p style="text-align: center;">
+    <%= @current_player.name %>
+    <%= @current_player_hp %> HP
   </p>
 </div>
 
 <form action="/attack">
-  <input type="submit" value="Attack <%= @player2 %>">
+  <input type="submit" value="Attack <%= @other_player.name %>">
 </form>

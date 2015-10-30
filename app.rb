@@ -4,7 +4,12 @@ require './lib/game.rb'
 
 class Battle < Sinatra::Base
 
-
+  def player_variables
+    @current_player = $game.current_player
+    @other_player = $game.other_player
+    @other_player_hp = $game.other_player_hp
+    @current_player_hp = $game.current_player_hp
+  end
 
   get '/' do
     erb(:index)
@@ -12,22 +17,18 @@ class Battle < Sinatra::Base
 
   post '/names' do
     $game = Game.new(params[:name1],params[:name2])
-    $player1 = $game.player1
-    $player2 = $game.player2
     redirect('/play')
   end
 
   get '/play' do
-    @player1 = $player1.name
-    @player2 = $player2.name
-    @player2_hp = $player2.hit_points
+    player_variables
     erb(:play)
   end
 
   get '/attack' do
-    @player1 = $player1.name
-    @player2 = $player2.name
-    $game.attack($player2)
+    player_variables
+    $game.attack(@other_player)
+    $game.switch_turns
     erb(:attack)
   end
 
